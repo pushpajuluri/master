@@ -68,6 +68,7 @@ class GFDataService {
         var records:Array<Any> = []
         do {
             records = try context.fetch(fetchRequest) as Array<Any>
+            print("record count:\(records.count)")
         }catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -96,5 +97,15 @@ class GFDataService {
         
         return nil
     }
-
+    static func GetProducts() -> Array<Product>?{
+        let records:Array<Product> = GFDataService.fetchRecords(entity: "Product") as! Array<Product>
+        
+//        if records.count > 0{
+//            for i in records {
+//                return i
+//            }
+//        }
+        return records
+        
+    }
 }

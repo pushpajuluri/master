@@ -46,6 +46,7 @@ class GFLoginService {
                                 self.getEncryptionKeys()
                                 self.getConfigApi()
                                 self.getAccountBalance()
+                                
                             }else{
                                 self.delegate?.didFailLoginWithError(error)
                             }
@@ -69,6 +70,7 @@ class GFLoginService {
                 //else create wallet screen
                 if let wallet = GFWalletsService.userWallet() {
                     print(wallet)
+                    self.getProductsApi()
                     self.delegate?.didFinishLoginSuccessfully(self)
                 }else{
                     //self.presentCreateWallet()
@@ -116,6 +118,19 @@ class GFLoginService {
             }
             
         }
+    }
+    func getProductsApi(){
+        let configValues = GFProductsService()
+        configValues.fetchConfigurationValues { (success,error) in
+            if success! {
+                print("got products")
+            }
+            else{
+                print("error")
+            }
+            
+        }
+        
     }
     func presentCreateWallet(){
         let walletService = GFWalletsService()

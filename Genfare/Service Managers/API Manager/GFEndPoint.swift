@@ -20,6 +20,8 @@ enum GFEndpoint {
     case GetEncryptionKeys()
     case GetConfigApi()
     case GetAccountBalance()
+    case GetProductForWallet()
+ 
     
     // MARK: - Public Properties
     var method: Alamofire.HTTPMethod {
@@ -44,6 +46,9 @@ enum GFEndpoint {
             return .get
         case .GetAccountBalance:
             return .get
+        case .GetProductForWallet:
+            return .get
+       
         }
     }
     
@@ -80,7 +85,12 @@ enum GFEndpoint {
         case .GetAccountBalance:
             let  url = "/services/data-api/mobile/account/balance?tenant=\(Utilities.tenantId())"
             return Utilities.apiHost()+url
-
+        case .GetProductForWallet:
+              let wallet = GFWalletsService.userWallet()
+              let url = "/services/data-api/mobile/products?tenant=\(Utilities.tenantId())&walletId=\(wallet!.walletId!)"
+            return Utilities.apiHost()+url
+       
+            
             
         }
         
@@ -136,6 +146,11 @@ enum GFEndpoint {
             let  token:String = KeychainWrapper.standard.string(forKey: Constants.KeyChain.SecretKey)!
             commonHeaders["Authorization"] = String(format: "bearer %@", token)
             return commonHeaders
+        case .GetProductForWallet:
+            let  token:String = KeychainWrapper.standard.string(forKey: Constants.KeyChain.SecretKey)!
+            commonHeaders["Authorization"] = String(format: "bearer %@", token)
+            return commonHeaders
+        
         }
     }
     
@@ -179,6 +194,12 @@ enum GFEndpoint {
         case .GetAccountBalance:
             parameters = [:]
             return parameters
+        case .GetProductForWallet:
+            parameters = [:]
+            return parameters
+        l
+            
+            
             
         }
     }

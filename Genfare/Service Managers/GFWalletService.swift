@@ -47,6 +47,7 @@ class GFWalletsService {
                 switch response.result {
                 case .success(let JSON):
                     print(JSON)
+                     GFDataService.deleteAllRecords(entity: "Wallet")
                     self.saveWalletData(data: JSON as! [String : Any])
                     completionHandler(true,nil)
                 case .failure(let error):

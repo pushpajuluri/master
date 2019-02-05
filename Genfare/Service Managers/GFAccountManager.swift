@@ -40,5 +40,13 @@ class GFAccountManager {
         
         return nil
     }
+    static func GetWalletId() -> NSNumber{
+         let wallet:Wallet? = GFWalletsService.userWallet()
+        let walletid = wallet?.walletId
+        return walletid as! NSNumber
+    }
+    
+    
+   
 
 }

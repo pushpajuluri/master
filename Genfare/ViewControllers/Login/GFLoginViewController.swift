@@ -79,10 +79,21 @@ class GFLoginViewController: GFBaseViewController, LoginServiceDelegate {
 
     func didFinishLoginSuccessfully(_ sender: Any) {
         UIViewController.removeSpinner(spinner: self.spinnerView!)
-        popupAlert(title: "Success", message: "Login Successful...!!!", actionTitles: ["OK"], actions: [nil])
-        
+        let okAction = UIAlertAction(title: "OK", style: UIAlertActionStyle.default) {
+            UIAlertAction in
+            NSLog("OK Pressed")
+        }
+        popupAlert(title: "Success", message: "Login Successful...!!!", actionTitles: ["OK"], actions: [{ Void in
+            self.purchsestory()
+            }])
+  }
+    func purchsestory(){
+        if let navController = UIStoryboard(name: "Payment", bundle: nil).instantiateViewController(withIdentifier: "GFPurchaseTicketListViewController") as? GFPurchaseTicketListViewController {
+            if let navigator = navigationController {
+                navigator.pushViewController(navController, animated: false)
+            }
+        }
     }
-    
     func didLoginNeedSMSAuth(_ sender: Any) {
         //
     }
