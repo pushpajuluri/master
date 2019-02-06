@@ -467,6 +467,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Pkq-Uo-5JL"/>
                     </view>
+                    <connections>
+                        <outlet property="productsTableView" destination="ePW-ie-B1V" id="VLy-O7-TUm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFk-Z5-iJ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -786,6 +789,9 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="backButtonPressed:" destination="UvX-oO-RE1" eventType="touchUpInside" id="a69-Bh-Msc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

@@ -20,31 +20,10 @@ class GFTicketCardSeletionViewController: UIViewController {
         }
     }
 
-    
-//    func fetchConfigurationValues(completionHandler:@escaping (_ success:Bool?,_ error:Any?) -> Void) {
-//        let endpoint = GFEndpoint.GetProductForWallet()
-//
-//        Alamofire.request(endpoint.url, method: endpoint.method, parameters: endpoint.parameters, encoding: URLEncoding.default, headers: endpoint.headers)
-//            .responseJSON { response in
-//                switch response.result {
-//                case .success(let JSON):
-//                    print(JSON)
-//                    self.saveData(datas:JSON as! [[String : Any]])
-//                case .failure(let error):
-//                    print("Request failed with error: \(error)")
-//                    completionHandler(false,error)
-//                }
-//        }
-//    }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @IBAction func backButtonPressed(_ sender: Any) {
+         self.navigationController?.popViewController(animated: true)
     }
-    */
+    
+ 
 
 }

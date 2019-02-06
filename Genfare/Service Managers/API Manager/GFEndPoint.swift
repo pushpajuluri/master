@@ -197,7 +197,7 @@ enum GFEndpoint {
         case .GetProductForWallet:
             parameters = [:]
             return parameters
-        l
+        
             
             
             
